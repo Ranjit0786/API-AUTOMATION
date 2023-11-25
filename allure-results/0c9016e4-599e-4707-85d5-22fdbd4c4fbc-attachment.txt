@@ -1,0 +1,33 @@
+pm.test("Number of IDs is 6", function () {
+    const jsonData = pm.response.json();
+    const data = jsonData.data;
+
+    pm.expect(data).to.have.lengthOf(6);
+
+    for (const item of data) {
+        pm.expect(item).to.have.property('id');
+    }
+});
+// @allure.label.suite=Regression Suit 
+
+pm.test("Status code is 200", function () {
+  pm.response.to.be.ok;
+});
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Number of items is 6 and has expected properties", function () {
+    const jsonData = pm.response.json();
+    const data = jsonData.data;
+
+    pm.expect(data).to.have.lengthOf(6);
+
+    for (const item of data) {
+        pm.expect(item).to.have.property('id');
+        pm.expect(item).to.have.property('email');
+        pm.expect(item).to.have.property('first_name');
+        pm.expect(item).to.have.property('last_name');
+        pm.expect(item).to.have.property('avatar');
+    }
+});

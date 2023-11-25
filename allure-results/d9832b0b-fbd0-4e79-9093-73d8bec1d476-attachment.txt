@@ -1,0 +1,6 @@
+pm.test("Validate Empty JSON Object", function () {
+    const jsonData = pm.response.json();
+
+    // Check if the response is an empty JSON object
+    pm.expect(jsonData).to.deep.equal({});
+});

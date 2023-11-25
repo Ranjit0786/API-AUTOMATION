@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "dd6dcbc0-9c44-419a-a049-866d7e87680f",
+		"name": "API AUTOMATION FOR PRACTIES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26342751",
+		"_collection_link": "https://bold-meteor-513106.postman.co/workspace/Ranjit~560ac14f-a554-42df-b0d6-4b8f168cfccd/collection/26342751-dd6dcbc0-9c44-419a-a049-866d7e87680f?action=share&source=collection_link&creator=26342751"
+	},
+	"item": [
+		{
+			"name": "Validate User having 6 entries in 1st page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Number of IDs is 6\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const data = jsonData.data;\r",
+							"\r",
+							"    pm.expect(data).to.have.lengthOf(6);\r",
+							"\r",
+							"    for (const item of data) {\r",
+							"        pm.expect(item).to.have.property('id');\r",
+							"    }\r",
+							"});\r",
+							"// @allure.label.suite=Regression Suit \r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.be.ok;\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Number of items is 6 and has expected properties\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const data = jsonData.data;\r",
+							"\r",
+							"    pm.expect(data).to.have.lengthOf(6);\r",
+							"\r",
+							"    for (const item of data) {\r",
+							"        pm.expect(item).to.have.property('id');\r",
+							"        pm.expect(item).to.have.property('email');\r",
+							"        pm.expect(item).to.have.property('first_name');\r",
+							"        pm.expect(item).to.have.property('last_name');\r",
+							"        pm.expect(item).to.have.property('avatar');\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users?page=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate User having 6 entries in 2nd page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Number of IDs is 6\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const data = jsonData.data;\r",
+							"\r",
+							"    pm.expect(data).to.have.lengthOf(6);\r",
+							"\r",
+							"    for (const item of data) {\r",
+							"        pm.expect(item).to.have.property('id');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Number of items is 6 and has expected properties\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const data = jsonData.data;\r",
+							"\r",
+							"    pm.expect(data).to.have.lengthOf(6);\r",
+							"\r",
+							"    for (const item of data) {\r",
+							"        pm.expect(item).to.have.property('id');\r",
+							"        pm.expect(item).to.have.property('email');\r",
+							"        pm.expect(item).to.have.property('first_name');\r",
+							"        pm.expect(item).to.have.property('last_name');\r",
+							"        pm.expect(item).to.have.property('avatar');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate Page Number\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const expectedPageNumber = 2; // Change this to the expected page number\r",
+							"    pm.expect(jsonData.page).to.equal(expectedPageNumber);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users?page=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate user fetch the data from page 1 of id 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate Entire JSON Response\", function () {\r",
+							"    const expectedData = {\r",
+							"        \"id\": 12,\r",
+							"        \"email\": \"rachel.howell@reqres.in\",\r",
+							"        \"first_name\": \"Rachel\",\r",
+							"        \"last_name\": \"Howell\",\r",
+							"        \"avatar\": \"https://reqres.in/img/faces/12-image.jpg\"\r",
+							"    };\r",
+							"\r",
+							"    const expectedSupport = {\r",
+							"        \"url\": \"https://reqres.in/#support-heading\",\r",
+							"        \"text\": \"To keep ReqRes free, contributions towards server costs are appreciated!\"\r",
+							"    };\r",
+							"\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    // Check if 'data' object exists\r",
+							"    pm.expect(jsonData).to.have.property('data');\r",
+							"\r",
+							"    // Validate entire 'data' object\r",
+							"    pm.expect(jsonData.data).to.deep.equal(expectedData);\r",
+							"\r",
+							"    // Check if 'support' object exists\r",
+							"    pm.expect(jsonData).to.have.property('support');\r",
+							"\r",
+							"    // Validate entire 'support' object\r",
+							"    pm.expect(jsonData.support).to.deep.equal(expectedSupport);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users/12",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate If user pass any wrong ID then user get 404 not found response and response should be empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate Empty JSON Object\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    // Check if the response is an empty JSON object\r",
+							"    pm.expect(jsonData).to.deep.equal({});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users/23",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"23"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

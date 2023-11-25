@@ -1,0 +1,28 @@
+pm.test("Validate Entire JSON Response", function () {
+    const expectedData = {
+        "id": 12,
+        "email": "rachel.howell@reqres.in",
+        "first_name": "Rachel",
+        "last_name": "Howell",
+        "avatar": "https://reqres.in/img/faces/12-image.jpg"
+    };
+
+    const expectedSupport = {
+        "url": "https://reqres.in/#support-heading",
+        "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+    };
+
+    const jsonData = pm.response.json();
+
+    // Check if 'data' object exists
+    pm.expect(jsonData).to.have.property('data');
+
+    // Validate entire 'data' object
+    pm.expect(jsonData.data).to.deep.equal(expectedData);
+
+    // Check if 'support' object exists
+    pm.expect(jsonData).to.have.property('support');
+
+    // Validate entire 'support' object
+    pm.expect(jsonData.support).to.deep.equal(expectedSupport);
+});

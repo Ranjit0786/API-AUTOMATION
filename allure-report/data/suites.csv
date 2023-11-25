@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Nov 25 13:41:42 IST 2023","Sat Nov 25 13:41:42 IST 2023","263","","","","","","Validate User having 6 entries in 2nd page",""
+"passed","Sat Nov 25 13:41:41 IST 2023","Sat Nov 25 13:41:42 IST 2023","739","","Regression","","","","Validate User having 6 entries in 1st page",""
+"passed","Sat Nov 25 13:41:42 IST 2023","Sat Nov 25 13:41:43 IST 2023","632","","","","","","Validate user fetch the data from page 1 of id 2",""
+"passed","Sat Nov 25 13:41:43 IST 2023","Sat Nov 25 13:41:43 IST 2023","635","","","","","","Validate If user pass any wrong ID then user get 404 not found response and response should be empty",""
